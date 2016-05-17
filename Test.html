@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<script>
+
+require(['papLoader!main'], function() {
+
+  var youtubeId = ['UthPMjkQ6_I', 'lhfkITc0pxc', '9mJw9DzdkA8', 'R_JA_ZfQRM8'];
+
+  // 1. This code loads the IFrame Player API code asynchronously.
+  var tag = tag || document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+
+  var playerIdTut1 = 'dl-player-tut1';
+  var playerContainerTut1 = document.getElementById(playerIdTut1);
+  var videoIdTut1 = youtubeId[0];
+  var pwidthTut1 = document.getElementById(playerIdTut1).offsetWidth;
+  var pheightTut1 = document.getElementById(playerIdTut1).offsetHeight;
+
+  var playerIdTut2 = 'dl-player-tut2';
+  var playerContainerTut2 = document.getElementById(playerIdTut2);
+  var videoIdTut2 = youtubeId[1];
+  var pwidthTut2 = document.getElementById(playerIdTut2).offsetWidth;
+  var pheightTut2 = document.getElementById(playerIdTut2).offsetHeight;
+
+
+  var playerIdTut3 = 'dl-player-tut3';
+  var playerContainerTut3 = document.getElementById(playerIdTut3);
+  var videoIdTut3 = youtubeId[2];
+  var pwidthTut3 = document.getElementById(playerIdTut3).offsetWidth;
+  var pheightTut3 = document.getElementById(playerIdTut3).offsetHeight;
+
+
+  var playerIdTut4 = 'dl-player-tut4';
+  var playerContainerTut4 = document.getElementById(playerIdTut4);
+  var videoIdTut4 = youtubeId[3];
+  var pwidthTut4 = document.getElementById(playerIdTut4).offsetWidth;
+  var pheightTut4 = document.getElementById(playerIdTut4).offsetHeight
+
+
+  // 2. This function creates an <iframe> (and YouTube player) after the API code downloads.
+  function createYTPlayerTut1() {
+    var playerTut1 = new YT.Player(playerIdTut1, {
+      height: pheightTut1,
+      width: pwidthTut1,
+      videoId: videoIdTut1,
+      events: {
+        'onReady': onPlayerReady1,
+        'onStateChange': onPlayerStateChange
+      }
+    });
+  }
+
+  function createYTPlayerTut2() {
+    var playerTut2 = new YT.Player(playerIdTut2, {
+      height: pheightTut2,
+      width: pwidthTut2,
+      videoId: videoIdTut2,
+      events: {
+        'onReady': onPlayerReady2,
+        'onStateChange': onPlayerStateChange
+      }
+    });
+  }
+
+  function createYTPlayerTut3() {
+    var playerTut3 = new YT.Player(playerIdTut3, {
+      height: pheightTut3,
+      width: pwidthTut3,
+      videoId: videoIdTut3,
+      events: {
+        'onReady': onPlayerReady3,
+        'onStateChange': onPlayerStateChange
+      }
+    });
+  }
+
+  function createYTPlayerTut4() {;
+    var playerTut4 = new YT.Player(playerIdTut4, {
+      height: pheightTut4,
+      width: pwidthTut4,
+      videoId: videoIdTut4,
+      events: {
+        'onReady': onPlayerReady4,
+        'onStateChange': onPlayerStateChange
+      }
+    });
+  }
+
+
+  // 4. The API will call this function when the video player is ready.
+  function onPlayerReady1(event) {
+    event.target.playVideo();
+  }
+
+  function onPlayerReady2(event) {
+    event.target.playVideo();
+  }
+
+  function onPlayerReady3(event) {
+    event.target.playVideo();
+  }
+
+  function onPlayerReady4(event) {
+    event.target.playVideo();
+  }
+
+  // 5. The API calls this function when the player's state changes.
+  //    The function indicates that when playing a video (state=1),
+  //    the player should play for six seconds and then stop.
+  var done = false;
+
+  function onPlayerStateChange(event) {
+    if (event.data == YT.PlayerState.PLAYING && !done) {
+      // setTimeout(stopVideo, 6000);
+      done = true;
+    }
+  }
+
+  function stopVideo1() {
+    playerTut1.stopVideo();
+  }
+
+  function stopVideo2() {
+    playerTut2.stopVideo();
+  }
+
+  function stopVideo3() {
+    playerTut3.stopVideo();
+  }
+
+  function stopVideo4() {
+    playerTut4.stopVideo();
+  }
+
+
+
+
+  playerContainerTut1.addEventListener('click', createYTPlayerTut1, false);
+  playerContainerTut2.addEventListener('click', createYTPlayerTut2, false);
+  playerContainerTut3.addEventListener('click', createYTPlayerTut3, false);
+  playerContainerTut4.addEventListener('click', createYTPlayerTut4, false);
+
+
+
+  $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
+    var iframe = $(e.relatedTarget.hash).find('iframe');
+    var src = iframe.attr('src');
+    iframe.attr('src', '');
+    iframe.attr('src', src);
+  });
+
+
+});
+/**** /VIDEOPLAYER SUPPORT !!!!!!! ****/
+
+
+</script>
+
+<style type="text/css">
+
+@import url('http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css');
+.videotutstabs {
+  width: 92%;
+  border-bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.videotutstabs>li>a {
+  border-radius: 100%;
+  color: #11B81F;
+  border: 2px solid #11B81F;
+  font-size: 20px;
+  line-height: inherit;
+  padding: 11px 15px;
+  margin-right: 0;
+}
+
+.videotutstabs>li.active>a,
+.videotutstabs>li.active>a:hover,
+.videotutstabs>li.active>a:focus,
+.videotutstabs>li>a:hover,
+.videotutstabs>li>a:focus {
+  color: #FFFFFF;
+  border: 2px solid #11B81F;
+  background-color: #11B81F;
+}
+
+.videotabsseparator {
+  width: 30%;
+  height: 2px;
+  background-color: #88DB8F;
+  margin-top: 20px;
+}
+
+.videodescriptions {
+  text-align: center;
+  color: #666;
+  font-family: robotolight, helvetice, sans-serif;
+  font-size: 14px;
+}
+
+.vswhite {
+  background-color: #fff;
+}
+
+.videotutsdescriptions {
+  width: 95%;
+}
+
+.videotutdescriptionsadj-third {
+  margin-right: 27px;
+}
+
+.videotutdescriptionsadj-forth {
+  margin-right: 7px;
+}
+
+._dlc .dl-video-player-tut1 {
+  background-image: url("/documents/10162/49888950/installation%401x.jpg/892a46a7-ef01-4c58-852a-6b6e04d4c6a7?t=1462647445416");
+}
+
+._dlc .dl-video-player-tut2 {
+  background-image: url("/documents/10162/49888950/pairing%401x.jpg/f16019c7-68f0-44a4-bef7-798ee4d7d014?t=1462647446908");
+}
+
+._dlc .dl-video-player-tut3 {
+  background-image: url("/documents/10162/49888950/steckplatz_finden%401x.jpg/bf7e1dcb-d5c1-4601-8cb4-b15455a5262a?t=1462647448304");
+}
+
+._dlc .dl-video-player-tut4 {
+  background-image: url("/documents/10162/49888950/erste_fahrt%401x.jpg/b12c5d7f-3596-4a11-ba31-ddd551e5eaf6?t=1462647443498");
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- Nav tabs -->
+<ul class="nav nav-tabs videotutstabs">
+  <li class="active"><a href="#tut_one" data-toggle="tab">1</a></li>
+  <li class="videotabsseparator"></li>
+  <li><a href="#tut_two" data-toggle="tab">2</a></li>
+  <li class="videotabsseparator"></li>
+  <li><a href="#tut_three" data-toggle="tab">3</a></li>
+  <li class="videotabsseparator"></li>
+  <li><a href="#tut_four" data-toggle="tab">4</a></li>
+</ul>
+<ul class="nav nav-tabs videotutstabs videotutsdescriptions">
+  <li class="active">
+    <p class="videodescriptions">App installieren</p>
+  </li>
+  <li class="videotabsseparator vswhite"></li>
+  <li>
+    <p class="videodescriptions">Connector & App verbinden
+    </p>
+    <li class="videotabsseparator vswhite"></li>
+    <li>
+      <p class="videodescriptions videotutdescriptionsadj-third">Steckplatz finden</p>
+    </li>
+    <li class="videotabsseparator vswhite"></li>
+    <li>
+      <p class="videodescriptions videotutdescriptionsadj-forth">Die erste Fahrt</p>
+    </li>
+</ul>
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane fade active in" id="tut_one">
+    <!--New video content starts here-->
+    <div class="col-xs-12">
+      <section class="tv-spot _gov">
+        <div class="container">
+          <div class="row">
+            <div class="free-img pb-2 text-center _dlc">
+              <div class="dl-video-player dl-video-player-tut1" id="dl-player-tut1">
+                <button class="play-button icon icon-pap-052"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!--New video content ends here-->
+
+  </div>
+  <div class="tab-pane fade" id="tut_two">
+    <!--New video content starts here-->
+    <div class="col-xs-12">
+      <section class="tv-spot _gov">
+        <div class="container">
+          <div class="row">
+            <div class="free-img pb-2 text-center _dlc">
+              <div class="dl-video-player dl-video-player-tut2" id="dl-player-tut2">
+                <button class="play-button icon icon-pap-052"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!--New video content ends here-->
+  </div>
+  <div class="tab-pane fade" id="tut_three">
+    <!--New video content starts here-->
+    <div class="col-xs-12">
+      <section class="tv-spot _gov">
+        <div class="container">
+          <div class="row">
+            <div class="free-img pb-2 text-center _dlc">
+              <div class="dl-video-player dl-video-player-tut3" id="dl-player-tut3">
+                <button class="play-button icon icon-pap-052"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!--New video content ends here-->
+  </div>
+  <div class="tab-pane fade" id="tut_four">
+    <!--New video content starts here-->
+    <div class="col-xs-12">
+      <section class="tv-spot _gov">
+        <div class="container">
+          <div class="row">
+            <div class="free-img pb-2 text-center _dlc">
+              <div class="dl-video-player dl-video-player-tut4" id="dl-player-tut4">
+                <button class="play-button icon icon-pap-052"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!--New video content ends here-->
+  </div>
+</div>
+
+</body>
+</html>
